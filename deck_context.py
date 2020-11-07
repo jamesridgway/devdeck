@@ -1,3 +1,5 @@
+from StreamDeck.ImageHelpers import PILHelper
+
 from image_processing import render_key_image
 
 
@@ -16,6 +18,10 @@ class DeckContext:
 
     def set_key_image(self, key_no, icon):
         self.__deck.set_key_image(key_no, icon)
+
+    def set_key_image_native(self, key_no, icon):
+        image = PILHelper.to_native_format(self.__deck, icon)
+        self.__deck.set_key_image(key_no, image)
 
     def set_active_deck(self, deck):
         self.__devdeck.set_active_deck(deck)
