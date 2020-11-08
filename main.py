@@ -31,4 +31,9 @@ if __name__ == "__main__":
                 continue
 
             if t.is_alive():
-                t.join()
+                try:
+                    t.join()
+                except KeyboardInterrupt as ex:
+                    keys = deck.key_count()
+                    for key_no in range(keys):
+                        deck.set_key_image(key_no, None)
