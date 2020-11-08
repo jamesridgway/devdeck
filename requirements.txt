@@ -1,3 +1,4 @@
 streamdeck
 pillow
+pulsectl
 pyyaml
