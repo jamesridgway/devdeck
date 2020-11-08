@@ -14,7 +14,6 @@ class SlackDeck(DeckController):
             context.set_icon(os.path.join(os.path.dirname(__file__), "../assets", 'slack.png'))
 
     def deck_controls(self):
-        print('deck controls!!')
         self.register_control(self.offset + 0, SlackOnlineControl)
         self.register_control(self.offset + 2, SlackOnlineControl)
         self.register_control(self.offset + 4, SlackOnlineControl)
