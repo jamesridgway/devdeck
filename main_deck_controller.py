@@ -8,7 +8,11 @@ from deck_controller import DeckController
 
 
 class MainDeckController(DeckController):
-    def deck(self):
+
+    def __init__(self, **kwargs):
+        super().__init__(None, **kwargs)
+
+    def deck_controls(self):
 
         with open(os.path.join(str(Path.home()), '.devdeck', 'settings.yml'), 'r') as stream:
             settings = yaml.safe_load(stream)
@@ -17,5 +21,6 @@ class MainDeckController(DeckController):
             for control in settings['controls']:
                 module_name, class_name = control['name'].rsplit(".", 1)
                 ControlClass = getattr(importlib.import_module(module_name), class_name)
-                ctrl_instance = ControlClass(**control['settings']) if 'settings' in control else ControlClass()
-                self.register_control(control['key'], ctrl_instance)
+                control_settings = control['settings'] if 'settings' in control else {}
+                self.register_control(control['key'], ControlClass, **control_settings)
+
