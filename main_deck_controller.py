@@ -1,4 +1,6 @@
 import importlib
+import os
+from pathlib import Path
 
 import yaml
 
@@ -8,7 +10,7 @@ from deck_controller import DeckController
 class MainDeckController(DeckController):
     def deck(self):
 
-        with open("settings.yml", 'r') as stream:
+        with open(os.path.join(str(Path.home()), '.devdeck', 'settings.yml'), 'r') as stream:
             settings = yaml.safe_load(stream)
             settings = settings['decks'][0]
 
