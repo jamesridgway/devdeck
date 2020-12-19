@@ -5,6 +5,10 @@ from devdeck.controls.deck_control import DeckControl
 
 class NameListControl(DeckControl):
 
+    def __init__(self, key_no, **kwargs):
+        self.name_index = 0
+        super().__init__(key_no, **kwargs)
+
     def initialize(self):
         self.name_index = 0
         with self.deck_context() as context:

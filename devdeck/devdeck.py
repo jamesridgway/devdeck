@@ -14,7 +14,8 @@ class DevDeck:
 
     def set_active_deck(self, deck):
         self.__logger.info("Setting active deck: %s", type(deck).__name__)
-        [d.clear_deck_context() for d in self.decks]
+        for deck_itr in self.decks:
+            deck_itr.clear_deck_context()
         self.decks.append(deck)
         self.get_active_deck().render(DeckContext(self, self.__deck))
 

@@ -7,6 +7,10 @@ from devdeck.controls.deck_control import DeckControl
 
 class MicMuteControl(DeckControl):
 
+    def __init__(self, key_no, **kwargs):
+        self.pulse = None
+        super().__init__(key_no, **kwargs)
+
     def initialize(self):
         self.pulse = pulsectl.Pulse()
         self.__render_icon()

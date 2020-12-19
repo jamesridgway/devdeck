@@ -20,7 +20,6 @@ class MainDeckController(DeckController):
 
             for control in settings['controls']:
                 module_name, class_name = control['name'].rsplit(".", 1)
-                ControlClass = getattr(importlib.import_module(module_name), class_name)
+                control_class = getattr(importlib.import_module(module_name), class_name)
                 control_settings = control['settings'] if 'settings' in control else {}
-                self.register_control(control['key'], ControlClass, **control_settings)
-
+                self.register_control(control['key'], control_class, **control_settings)
