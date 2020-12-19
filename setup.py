@@ -17,7 +17,7 @@ with open('requirements.txt') as f:
 setup(
     name='devdeck',
     version=get_version(),
-    description='A developers approach to using a Stream Deck.',
+    description="A developer's approach to using a Stream Deck.",
     long_description=open('README.md').read(),
     author='James Ridgway',
     url='https://github.com/jamesridgway/devdeck',

@@ -1,5 +1,5 @@
 # Dev Deck
-Stream Deck control software for software developers.
+Stream Deck control software for software developer's.
 
 Dev Deck ships with Controls and Decks for:
 
