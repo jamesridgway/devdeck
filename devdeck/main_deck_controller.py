@@ -4,7 +4,7 @@ from pathlib import Path
 
 import yaml
 
-from deck_controller import DeckController
+from devdeck.deck_controller import DeckController
 
 
 class MainDeckController(DeckController):

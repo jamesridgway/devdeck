@@ -1,6 +1,6 @@
 import logging
 
-from deck_context import DeckContext
+from devdeck.deck_context import DeckContext
 
 
 class DevDeck:

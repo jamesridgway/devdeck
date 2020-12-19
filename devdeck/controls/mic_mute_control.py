@@ -2,7 +2,7 @@ import os
 
 from pulsectl import pulsectl
 
-from controls.deck_control import DeckControl
+from devdeck.controls.deck_control import DeckControl
 
 
 class MicMuteControl(DeckControl):
@@ -24,6 +24,6 @@ class MicMuteControl(DeckControl):
         with self.deck_context() as context:
             mic = self.__get_mic()
             if mic.mute == 0:
-                context.set_icon(os.path.join(os.path.dirname(__file__), "../assets", 'microphone.png'))
+                context.set_icon(os.path.join(os.path.dirname(__file__), "../../assets", 'microphone.png'))
             else:
-                context.set_icon(os.path.join(os.path.dirname(__file__), "../assets", 'microphone-mute.png'))
+                context.set_icon(os.path.join(os.path.dirname(__file__), "../../assets", 'microphone-mute.png'))

@@ -2,8 +2,7 @@ import os
 
 from PIL import ImageFont, Image, ImageDraw
 from StreamDeck.ImageHelpers import PILHelper
-
-from image_processing import render_key_image
+from devdeck.image_processing import render_key_image
 
 
 class DeckContext:
@@ -37,7 +36,7 @@ class DeckContext:
         self.__devdeck.pop_active_deck()
 
     def render_text(self, key_no, text, font_size=120, fill="white"):
-        font = ImageFont.truetype(os.path.join(os.path.dirname(__file__), "assets", 'Roboto-Regular.ttf'), font_size)
+        font = ImageFont.truetype(os.path.join(os.path.dirname(__file__), "../assets", 'Roboto-Regular.ttf'), font_size)
 
         image = Image.new("RGB", (512, 512))
         draw = ImageDraw.Draw(image)

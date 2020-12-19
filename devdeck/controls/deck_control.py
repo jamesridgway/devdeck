@@ -1,7 +1,6 @@
 import sys
 
-from control_context import ControlContext
-from deck_context import DeckContext
+from devdeck.control_context import ControlContext
 
 
 class DeckControlContextBlock(Exception):

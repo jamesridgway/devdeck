@@ -1,10 +1,9 @@
 import datetime
 import os
 import threading
-from concurrent.futures import thread
 from time import sleep
 
-from controls.deck_control import DeckControl
+from devdeck.controls.deck_control import DeckControl
 
 
 class TimerControl(DeckControl):
@@ -16,7 +15,7 @@ class TimerControl(DeckControl):
 
     def initialize(self):
         with self.deck_context() as context:
-            context.set_icon(os.path.join(os.path.dirname(__file__), "../assets", 'stopwatch.png'))
+            context.set_icon(os.path.join(os.path.dirname(__file__), "../../assets", 'stopwatch.png'))
 
     def pressed(self):
         if self.start_time is None:
@@ -32,7 +31,7 @@ class TimerControl(DeckControl):
             self.start_time = None
             self.end_time = None
             with self.deck_context() as context:
-                context.set_icon(os.path.join(os.path.dirname(__file__), "../assets", 'stopwatch.png'))
+                context.set_icon(os.path.join(os.path.dirname(__file__), "../../assets", 'stopwatch.png'))
 
     def _update_display(self):
         while self.end_time is None:

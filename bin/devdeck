@@ -1,11 +1,12 @@
+#!/usr/bin/env python3
 import logging
 import sys
 import threading
 
 from StreamDeck.DeviceManager import DeviceManager
 
-from dev_deck import DevDeck
-from main_deck_controller import MainDeckController
+from devdeck.devdeck import DevDeck
+from devdeck.main_deck_controller import MainDeckController
 
 if __name__ == "__main__":
     root = logging.getLogger('devdeck')
