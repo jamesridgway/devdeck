@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     strategy:
       matrix:
         python-version: [3.6, 3.7, 3.8]
@@ -14,10 +14,6 @@ jobs:
       uses: actions/setup-python@v1
       with:
         python-version: ${{ matrix.python-version }}
-    - name: Updating apt packages
-      run: sudo apt update
-    - name: Install libpulse0:i386
-      run: sudo apt install -y libpulse0:i386
     - name: Install venv and dependencies
       run: ./setup.sh
 #    - name: pylint
