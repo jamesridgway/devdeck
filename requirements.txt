@@ -1,4 +1,9 @@
-streamdeck
+assertpy
+cerberus
+jsonschema
 pillow
 pulsectl
+pytest
+pytest-cov
 pyyaml
+streamdeck

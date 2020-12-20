@@ -1,0 +1,9 @@
+decks:
+  - serial_number: "ABC123"
+    controls:
+      - name: 'devdeck.controls.mic_mute_control.MicMuteControl'
+        key: 0
+        settings:
+          microphone: Scarlett Solo USB Analogue Stereo
+      - name: 'devdeck.controls.timer_control.TimerControl'
+        key: 3

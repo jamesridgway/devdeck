@@ -1,0 +1,13 @@
+decks:
+  - serial_number: "AL28J2C01115"
+    controls:
+      - name: 'devdeck.controls.mic_mute_control.MicMuteControl'
+        key: 0
+        settings:
+          microphone: Scarlett Solo USB Analogue Stereo
+      - name: 'devdeck.controls.slack_deck.SlackDeck'
+        key: 1
+        settings:
+          offset: 0
+      - name: 'devdeck.controls.timer_control.TimerControl'
+        keyx: 3
