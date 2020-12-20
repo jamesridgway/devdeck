@@ -15,7 +15,7 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
     - name: Install libpulse0:i386
-      run: apt install -y libpulse0:i386
+      run: sudo apt install -y libpulse0:i386
     - name: Install venv and dependencies
       run: ./setup.sh
 #    - name: pylint
