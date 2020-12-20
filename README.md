@@ -1,4 +1,6 @@
 # Dev Deck
+![CI](https://github.com/jamesridgway/devdeck/workflows/CI/badge.svg?branch=main)
+
 Stream Deck control software for software developer's.
 
 Dev Deck ships with Controls and Decks for:
