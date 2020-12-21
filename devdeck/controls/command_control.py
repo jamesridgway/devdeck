@@ -1,6 +1,6 @@
 from subprocess import Popen, DEVNULL
 
-from devdeck.controls.deck_control import DeckControl
+from devdeck.core.controls.deck_control import DeckControl
 
 
 class CommandControl(DeckControl):

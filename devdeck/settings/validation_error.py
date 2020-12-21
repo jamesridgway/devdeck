@@ -1,4 +1,4 @@
-from devdeck.settings.cerberus_utils import CerberusUtils
+from devdeck.core.settings.cerberus_utils import CerberusUtils
 
 
 class ValidationError(Exception):

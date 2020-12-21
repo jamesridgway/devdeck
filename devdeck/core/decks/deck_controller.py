@@ -1,6 +1,6 @@
 import logging
 
-from devdeck.controls.deck_control import DeckControl
+from devdeck.core.controls.deck_control import DeckControl
 
 
 class DeckController(DeckControl):

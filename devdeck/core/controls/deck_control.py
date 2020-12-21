@@ -2,8 +2,8 @@ import sys
 
 from cerberus import Validator
 
-from devdeck.control_context import ControlContext
-from devdeck.settings.control_validation_error import ControlValidationError
+from devdeck.core.control_context import ControlContext
+from devdeck.core.settings.control_validation_error import ControlValidationError
 
 
 class DeckControlContextBlock(Exception):

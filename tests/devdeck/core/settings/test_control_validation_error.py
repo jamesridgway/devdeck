@@ -1,7 +1,7 @@
 from assertpy import assert_that
 
 from devdeck.controls.timer_control import TimerControl
-from devdeck.settings.control_validation_error import ControlValidationError
+from devdeck.core.settings.control_validation_error import ControlValidationError
 
 
 class TestControlValidationError:

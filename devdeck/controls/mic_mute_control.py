@@ -2,7 +2,7 @@ import os
 
 from pulsectl import pulsectl
 
-from devdeck.controls.deck_control import DeckControl
+from devdeck.core.controls.deck_control import DeckControl
 
 
 class MicMuteControl(DeckControl):
