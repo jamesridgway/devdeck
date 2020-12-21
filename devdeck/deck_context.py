@@ -35,7 +35,13 @@ class DeckContext:
     def pop_active_deck(self):
         self.__devdeck.pop_active_deck()
 
-    def render_text(self, key_no, text, font_size=120, fill="white"):
+    def render_text(self, key_no, text, **kwargs):
+        font_size = 120
+        fill = "white"
+        if 'font_size' in kwargs:
+            font_size = kwargs['font_size']
+        if 'fill' in kwargs:
+            fill = kwargs['fill']
         font = ImageFont.truetype(os.path.join(os.path.dirname(__file__), "../assets", 'Roboto-Regular.ttf'), font_size)
 
         image = Image.new("RGB", (512, 512))

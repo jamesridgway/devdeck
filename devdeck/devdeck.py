@@ -20,6 +20,8 @@ class DevDeck:
         self.get_active_deck().render(DeckContext(self, self.__deck))
 
     def get_active_deck(self):
+        if not self.decks:
+            return None
         return self.decks[-1]
 
     def pop_active_deck(self):
