@@ -2,6 +2,7 @@ from assertpy import assert_that
 
 from devdeck.controls.mic_mute_control import MicMuteControl
 from devdeck.controls.timer_control import TimerControl
+from devdeck.settings.deck_settings import DeckSettings
 from devdeck.settings.devdeck_settings import DevDeckSettings
 from devdeck.settings.validation_error import ValidationError
 from tests.testing_utils import TestingUtils
@@ -16,6 +17,13 @@ class TestDevDeckSettings:
         filename = TestingUtils.get_filename('devdeck/settings/test_devdeck_settings_not_valid.yml')
         assert_that(DevDeckSettings.load).raises(ValidationError).when_called_with(filename)\
             .is_equal_to('The following validation errors occurred:\n * decks.0.controls.2.keyx: unknown field.')
+
+    def test_deck_returns_settings_specific_for_deck(self):
+        devdeck_settings = DevDeckSettings.load(
+            TestingUtils.get_filename('devdeck/settings/test_devdeck_settings_valid.yml'))
+        assert_that(devdeck_settings.deck('unknown s/n')).is_none()
+
+        assert_that(devdeck_settings.deck('ABC123')).is_instance_of(DeckSettings)
 
     def test_empty_config(self):
         devdeck_settings = DevDeckSettings.load(TestingUtils.get_filename('devdeck/settings/test_devdeck_settings_valid.yml'))
