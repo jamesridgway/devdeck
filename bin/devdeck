@@ -1,12 +1,16 @@
 #!/usr/bin/env python3
 import logging
+import os
 import sys
 import threading
+from pathlib import Path
 
 from StreamDeck.DeviceManager import DeviceManager
 
 from devdeck.devdeck import DevDeck
 from devdeck.main_deck_controller import MainDeckController
+from devdeck.settings.devdeck_settings import DevDeckSettings
+from devdeck.settings.validation_error import ValidationError
 
 if __name__ == "__main__":
     root = logging.getLogger('devdeck')
@@ -18,14 +22,30 @@ if __name__ == "__main__":
     handler.setFormatter(formatter)
     root.addHandler(handler)
 
+    settings_filename = os.path.join(str(Path.home()), '.devdeck', 'settings.yml')
+    if not os.path.exists(settings_filename):
+        root.warning("No settings file detected!")
+        sys.exit(1)
+
+    try:
+        settings = DevDeckSettings.load(settings_filename)
+    except ValidationError as validation_error:
+        print(validation_error)
+
     streamdecks = DeviceManager().enumerate()
 
     for index, deck in enumerate(streamdecks):
         deck.open()
         root.info('Connecting to deck: %s (S/N: %s)', deck.id(), deck.get_serial_number())
 
+        deck_settings = settings.deck(deck.get_serial_number())
+        if deck_settings is None:
+            root.info("Skipping deck %s (S/N: %s) - no settings present", deck.id(), deck.get_serial_number())
+            deck.close()
+            continue
+
         dev_deck = DevDeck(deck)
-        dev_deck.set_active_deck(MainDeckController())
+        dev_deck.set_active_deck(MainDeckController(settings=deck_settings))
 
         for t in threading.enumerate():
             if t is threading.currentThread():
@@ -38,3 +58,4 @@ if __name__ == "__main__":
                     keys = deck.key_count()
                     for key_no in range(keys):
                         deck.set_key_image(key_no, None)
+                    deck.close()
