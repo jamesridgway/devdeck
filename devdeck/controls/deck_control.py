@@ -1,6 +1,11 @@
 import sys
 
+import yaml
+from cerberus import Validator
+
 from devdeck.control_context import ControlContext
+from devdeck.settings.control_validation_error import ControlValidationError
+from devdeck.settings.validation_error import ValidationError
 
 
 class DeckControlContextBlock(Exception):
@@ -35,6 +40,7 @@ class DeckControl:
         self.__deck_context = None
         self.__key_no = key_no
         self.settings = kwargs
+        self.validate_settings()
 
     def set_deck_context(self, deck_context):
         self.__deck_context = deck_context
@@ -54,3 +60,13 @@ class DeckControl:
     def released(self):
         pass
 
+    def settings_schema(self):
+        return None
+
+    def validate_settings(self):
+        if self.settings_schema() is None:
+            return
+
+        validator = Validator(self.settings_schema())
+        if not validator.validate(self.settings, self.settings_schema()):
+            raise ControlValidationError(self, self.__key_no, validator.errors)

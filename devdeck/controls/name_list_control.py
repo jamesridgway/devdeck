@@ -23,3 +23,13 @@ class NameListControl(DeckControl):
                 initials = ''.join(list(map(lambda x: x[0], self.settings['names'][self.name_index].split(' '))))
                 context.render_text(initials, font_size=256)
                 self.name_index += 1
+
+    def settings_schema(self):
+        return {
+            'names': {
+                'type': 'list',
+                'schema': {
+                    'type': 'string'
+                }
+            }
+        }
