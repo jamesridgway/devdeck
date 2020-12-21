@@ -8,8 +8,8 @@ class DeckController(DeckControl):
     def __init__(self, key_no, **kwargs):
         self.__logger = logging.getLogger('devdeck')
         self.controls = {}
-        self.deck_controls()
         super().__init__(key_no, **kwargs)
+        self.deck_controls()
 
     def clear_deck_context(self):
         for key_no, control in self.controls.items():

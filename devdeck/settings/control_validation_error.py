@@ -1,5 +1,3 @@
-import sys
-
 from devdeck.settings.cerberus_utils import CerberusUtils
 
 

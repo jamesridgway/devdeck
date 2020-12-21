@@ -8,7 +8,6 @@ from pathlib import Path
 from StreamDeck.DeviceManager import DeviceManager
 
 from devdeck.devdeck import DevDeck
-from devdeck.main_deck_controller import MainDeckController
 from devdeck.settings.devdeck_settings import DevDeckSettings
 from devdeck.settings.validation_error import ValidationError
 
@@ -45,7 +44,10 @@ if __name__ == "__main__":
             continue
 
         dev_deck = DevDeck(deck)
-        dev_deck.set_active_deck(MainDeckController(settings=deck_settings))
+
+        # Instantiate deck
+        main_deck = deck_settings.deck_class()(None, **deck_settings.settings())
+        dev_deck.set_active_deck(main_deck)
 
         for t in threading.enumerate():
             if t is threading.currentThread():

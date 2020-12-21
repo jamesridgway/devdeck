@@ -3,18 +3,18 @@ import collections
 
 class CerberusUtils:
     @staticmethod
-    def format_errors(d):
+    def format_errors(errors):
         obj = collections.OrderedDict()
 
-        def recurse(t, parent_key=""):
-            if isinstance(t, list):
-                for i in range(len(t)):
-                    recurse(t[i], str(parent_key) if parent_key else str(i))
-            elif isinstance(t, dict):
-                for k, v in t.items():
-                    recurse(v, str(parent_key) + '.' + str(k) if parent_key else k)
+        def recurse(error_items, parent_key=""):
+            if isinstance(error_items, list):
+                for list_index in range(len(error_items)):
+                    recurse(error_items[list_index], str(parent_key) if parent_key else str(list_index))
+            elif isinstance(error_items, dict):
+                for field, nested_error in error_items.items():
+                    recurse(nested_error, str(parent_key) + '.' + str(field) if parent_key else field)
             else:
-                obj[parent_key] = t
+                obj[parent_key] = error_items
 
-        recurse(d)
+        recurse(errors)
         return obj

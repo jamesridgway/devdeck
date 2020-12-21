@@ -11,24 +11,16 @@ schema = {
             'type': 'dict',
             'schema': {
                 'serial_number': {
-                    'type': 'string'
+                    'type': 'string',
+                    'required': True
                 },
-                'controls': {
-                    'type': 'list',
-                    'schema': {
-                        'type': 'dict',
-                        'schema': {
-                            'name': {
-                                'type': 'string'
-                            },
-                            'key': {
-                                'type': 'integer'
-                            },
-                            'settings': {
-                                'type': 'dict'
-                            }
-                        }
-                    }
+                'name': {
+                    'type': 'string',
+                    'required': True
+                },
+                'settings': {
+                    'type': 'dict',
+                    'required': True
                 }
             }
         }
@@ -41,7 +33,8 @@ class DevDeckSettings:
         self.settings = settings
 
     def deck(self, serial_number):
-        settings_for_deck = [deck_setting for deck_setting in self.decks() if deck_setting.serial_number() == serial_number[0:12]]
+        settings_for_deck = [deck_setting for deck_setting in self.decks() if
+                             deck_setting.serial_number() == serial_number[0:12]]
         if settings_for_deck:
             return settings_for_deck[0]
         return None
@@ -57,5 +50,4 @@ class DevDeckSettings:
             validator = Validator(schema)
             if validator.validate(settings, schema):
                 return DevDeckSettings(settings)
-            else:
-                raise ValidationError(validator.errors)
+            raise ValidationError(validator.errors)

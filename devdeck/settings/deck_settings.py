@@ -1,12 +1,16 @@
-from devdeck.settings.control_settings import ControlSettings
+import importlib
 
 
 class DeckSettings:
-    def __init__(self, settings):
-        self.settings = settings
+    def __init__(self, config):
+        self.config = config
 
     def serial_number(self):
-        return self.settings['serial_number']
+        return self.config['serial_number']
 
-    def controls(self):
-        return [ControlSettings(control_settings) for control_settings in self.settings['controls']]
+    def settings(self):
+        return self.config['settings']
+
+    def deck_class(self):
+        module_name, class_name = self.config['name'].rsplit(".", 1)
+        return getattr(importlib.import_module(module_name), class_name)
