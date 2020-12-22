@@ -9,7 +9,11 @@ class SinglePageDeckController(DeckController):
     def __init__(self, key_no, **kwargs):
         self.__logger = logging.getLogger('devdeck')
         self.settings = kwargs
-        super().__init__(None, **kwargs)
+        super().__init__(key_no, **kwargs)
+
+    def initialize(self):
+        with self.deck_context() as context:
+            context.set_icon(self.settings['icon'])
 
     def deck_controls(self):
         controls = [ControlSettings(control_settings) for control_settings in self.settings['controls']]
@@ -39,5 +43,8 @@ class SinglePageDeckController(DeckController):
                         }
                     }
                 }
-            }
+            },
+            'icon': {
+                'type': 'string',
+            },
         }

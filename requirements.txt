@@ -4,6 +4,5 @@ jsonschema
 pillow
 pulsectl
 pytest
-pytest-cov
 pyyaml
 streamdeck
