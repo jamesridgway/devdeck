@@ -16,6 +16,10 @@ class DeckController(DeckControl):
             control.clear_deck_context()
         super().clear_deck_context()
 
+    def dispose(self):
+        for key_no, control in self.controls.items():
+            control.dispose()
+
     def register_control(self, key_no, control_class, **settings):
         self.controls[key_no] = control_class(key_no, **settings)
 

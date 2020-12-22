@@ -3,6 +3,7 @@ import os
 from PIL import ImageFont, Image, ImageDraw
 from StreamDeck.ImageHelpers import PILHelper
 from devdeck.image_processing import render_key_image
+from devdeck.renderer import RendererManager
 
 
 class DeckContext:
@@ -34,6 +35,9 @@ class DeckContext:
 
     def pop_active_deck(self):
         self.__devdeck.pop_active_deck()
+
+    def renderer(self, key_no):
+        return RendererManager(key_no, self)
 
     def render_text(self, key_no, text, **kwargs):
         font_size = 120

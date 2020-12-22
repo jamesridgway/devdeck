@@ -37,3 +37,10 @@ class DevDeck:
             self.get_active_deck().pressed(key)
         else:
             self.get_active_deck().released(key)
+
+    def close(self):
+        keys = self.__deck.key_count()
+        for deck in self.decks:
+            deck.dispose()
+        for key_no in range(keys):
+            self.__deck.set_key_image(key_no, None)

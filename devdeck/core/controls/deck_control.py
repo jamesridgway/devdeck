@@ -49,6 +49,9 @@ class DeckControl:
     def deck_context(self):
         return DeckContextManager(self.__deck_context, self.__key_no)
 
+    def dispose(self):
+        pass
+
     def initialize(self):
         pass
 

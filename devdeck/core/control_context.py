@@ -11,3 +11,6 @@ class ControlContext:
 
     def render_text(self, text, **kwargs):
         self.deck_context.render_text(self.key_no, text, **kwargs)
+
+    def renderer(self):
+        return self.deck_context.renderer(self.key_no)
