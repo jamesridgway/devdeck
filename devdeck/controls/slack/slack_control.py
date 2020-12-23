@@ -1,6 +1,6 @@
 import os
 
-from devdeck.core.controls.deck_control import DeckControl
+from devdeck_core.controls.deck_control import DeckControl
 
 
 class SlackOnlineControl(DeckControl):

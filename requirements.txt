@@ -1,5 +1,6 @@
 assertpy
 cerberus
+devdeck-core
 jsonschema
 pillow
 pulsectl

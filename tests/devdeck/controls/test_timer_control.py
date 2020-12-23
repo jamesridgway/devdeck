@@ -3,7 +3,7 @@ from datetime import datetime
 from assertpy import assert_that
 
 from devdeck.controls.timer_control import TimerControl
-from devdeck.core.mock_deck_context import mock_context
+from devdeck_core.mock_deck_context import mock_context
 
 
 class TestTimerControl:

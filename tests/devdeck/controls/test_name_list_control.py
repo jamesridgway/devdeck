@@ -1,7 +1,7 @@
 from assertpy import assert_that
 
 from devdeck.controls.name_list_control import NameListControl
-from devdeck.core.mock_deck_context import mock_context
+from devdeck_core.mock_deck_context import mock_context
 
 
 class TestNameListControl:

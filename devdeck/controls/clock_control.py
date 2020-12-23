@@ -2,7 +2,7 @@ import threading
 from datetime import datetime
 from time import sleep
 
-from devdeck.core.controls.deck_control import DeckControl
+from devdeck_core.controls.deck_control import DeckControl
 
 
 class ClockControl(DeckControl):

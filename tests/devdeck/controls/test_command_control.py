@@ -1,7 +1,7 @@
 from assertpy import assert_that
 
 from devdeck.controls.command_control import CommandControl
-from devdeck.core.mock_deck_context import mock_context
+from devdeck_core.mock_deck_context import mock_context
 
 
 class TestCommandControl:

@@ -1,7 +1,7 @@
 import os
 
 from devdeck.controls.slack.slack_control import SlackOnlineControl
-from devdeck.core.decks.deck_controller import DeckController
+from devdeck_core.decks.deck_controller import DeckController
 
 
 class SlackDeck(DeckController):
