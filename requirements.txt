@@ -1,6 +1,7 @@
 assertpy
 cerberus
 devdeck-core
+emoji
 jsonschema
 pillow
 pulsectl
