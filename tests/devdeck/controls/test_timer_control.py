@@ -3,7 +3,9 @@ from datetime import datetime
 from assertpy import assert_that
 
 from devdeck.controls.timer_control import TimerControl
-from devdeck_core.mock_deck_context import mock_context
+from devdeck_core.mock_deck_context import mock_context, assert_rendered
+
+from tests.testing_utils import TestingUtils
 
 
 class TestTimerControl:
@@ -11,7 +13,7 @@ class TestTimerControl:
         timer_control = TimerControl(0)
         with mock_context(timer_control) as ctx:
             timer_control.initialize()
-            assert_that(ctx.get_icon()).ends_with('stopwatch.png')
+            assert_rendered(ctx, TestingUtils.get_filename('../assets/font-awesome/stopwatch.png'))
 
     def test_initial_state(self):
         timer_control = TimerControl(0)

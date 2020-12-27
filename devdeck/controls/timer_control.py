@@ -16,7 +16,8 @@ class TimerControl(DeckControl):
 
     def initialize(self):
         with self.deck_context() as context:
-            context.set_icon(os.path.join(os.path.dirname(__file__), "../../assets/font-awesome", 'stopwatch.png'))
+            with context.renderer() as r:
+                r.image(os.path.join(os.path.dirname(__file__), "../../assets/font-awesome", 'stopwatch.png')).end()
 
     def pressed(self):
         if self.start_time is None:
