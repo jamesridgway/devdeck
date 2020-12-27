@@ -1,6 +1,6 @@
 import os
 
-from PIL import Image, ImageFont, ImageDraw
+from PIL import Image, ImageFont, ImageDraw, ImageOps
 from devdeck.rendering.badge_count_renderer import BadgeCountRenderer
 from devdeck.rendering.emoji_renderer import EmojiRenderer
 from devdeck.rendering.image_renderer import ImageRenderer
@@ -40,6 +40,11 @@ class Renderer:
 
     def text(self, text):
         return TextRenderer(self, text)
+
+    def colorize(self, color):
+        grayscale = self.img.convert('L')
+        self.img = ImageOps.colorize(grayscale, black='black', white=color)
+        return self
 
     def render(self):
         return self.img

@@ -15,10 +15,12 @@ class NameListControl(DeckControl):
             context.set_icon(os.path.join(os.path.dirname(__file__), "../../assets/font-awesome", 'users.png'))
 
     def pressed(self):
+        if 'name' not in self.settings or len(self.settings['names']) == 0:
+            return
         with self.deck_context() as context:
             if self.name_index > len(self.settings['names']) - 1:
                 self.name_index = 0
-                context.set_icon(os.path.join(os.path.dirname(__file__), "../../assets", 'users.png'))
+                context.set_icon(os.path.join(os.path.dirname(__file__), "../../assets/font-awesome", 'users.png'))
             else:
                 initials = ''.join(list(map(lambda x: x[0], self.settings['names'][self.name_index].split(' '))))
                 context.render_text(initials, font_size=256)

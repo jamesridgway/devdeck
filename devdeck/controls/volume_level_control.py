@@ -61,3 +61,15 @@ class VolumeLevelControl(DeckControl):
                     .center_horizontally() \
                     .y(132) \
                     .end()
+                if round(self.volume, 2) == round(sink.volume.value_flat, 2):
+                    r.colorize('red')
+
+    def settings_schema(self):
+        return {
+            'output': {
+                'type': 'string'
+            },
+            'volume': {
+                'type': 'integer'
+            }
+        }

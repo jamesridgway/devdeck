@@ -55,3 +55,10 @@ class MicMuteControl(DeckControl):
                 context.set_icon(os.path.join(os.path.dirname(__file__), "../../assets/font-awesome", 'microphone.png'))
             else:
                 context.set_icon(os.path.join(os.path.dirname(__file__), "../../assets/font-awesome", 'microphone-mute.png'))
+
+    def settings_schema(self):
+        return {
+            'microphone': {
+                'type': 'string'
+            }
+        }
