@@ -16,7 +16,6 @@ class VolumeDeck(DeckController):
         self.__render_icon()
 
     def deck_controls(self):
-        pass
         for i in range(0, 11):
             control_settings = dict(self.settings)
             control_settings['volume'] = i * 10
