@@ -1,15 +1,14 @@
 import os
+import requests
+from pathlib import Path
 
-import emoji
-from PIL import ImageFont, ImageDraw
+from PIL import ImageDraw, Image
 
 
 class EmojiRenderer:
-    def __init__(self, renderer, text):
+    def __init__(self, renderer, emoji_name):
         self.renderer = renderer
-        self.text = text
-        self.font_filename = os.path.join(os.path.dirname(__file__), "../../assets", 'NotoColorEmoji.ttf')
-        self._font_size = 109
+        self.emoji_name = emoji_name.replace(':', '')
         self.center_vertical = None
         self.center_horizontal = None
         self._x = 0
@@ -17,9 +16,11 @@ class EmojiRenderer:
 
     def x(self, x):
         self._x = x
+        return self
 
-    def x(self, y):
+    def y(self, y):
         self._y = y
+        return self
 
     def center_vertically(self, offset=0):
         self.center_vertical = offset
@@ -29,23 +30,18 @@ class EmojiRenderer:
         self.center_horizontal = offset
         return self
 
-    def font_size(self, size):
-        self._font_size = size
-        return self
-
     def end(self):
-        font = ImageFont.truetype(self.font_filename, size=self._font_size, layout_engine=ImageFont.LAYOUT_RAQM)
+        emoji_filename = os.path.join(str(Path.home()), '.devdeck', 'emoji_cache', '{}_512.png'.format(self.emoji_name))
 
-        draw = ImageDraw.Draw(self.renderer.image)
-        label_w, label_h = draw.textsize('%s' % emoji.emojize(self.text), font=font)
+        if not os.path.exists(emoji_filename):
+            Path(os.path.join(str(Path.home()), '.devdeck', 'emoji_cache')).mkdir(parents=True, exist_ok=True)
+            emoji_url = "https://emojiapi.dev/api/v1/{}/512.png".format(self.emoji_name)
+            r = requests.get(emoji_url, allow_redirects=True)
+            with open(emoji_filename, 'wb') as f:
+                f.write(r.content)
 
-        # Positioning
-        label_pos = (self._x, self._y)
-        if self.center_vertical:
-            label_pos = (label_pos[0], ((self.renderer.image.height - label_h) // 2) + self.center_vertical)
-        if self.center_horizontal:
-            label_pos = (((self.renderer.image.width - label_w) // 2) + self.center_horizontal, label_pos[1])
+        emoji_img = Image.open(emoji_filename)
 
-        draw.text(label_pos, text='%s' % emoji.emojize(self.text), font=font, embedded_color=True)
+        self.renderer.img.paste(emoji_img, (0, 0))
 
         return self.renderer

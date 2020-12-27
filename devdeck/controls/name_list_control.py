@@ -12,7 +12,7 @@ class NameListControl(DeckControl):
     def initialize(self):
         self.name_index = 0
         with self.deck_context() as context:
-            context.set_icon(os.path.join(os.path.dirname(__file__), "../../assets", 'users.png'))
+            context.set_icon(os.path.join(os.path.dirname(__file__), "../../assets/font-awesome", 'users.png'))
 
     def pressed(self):
         with self.deck_context() as context:

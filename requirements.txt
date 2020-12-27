@@ -7,4 +7,5 @@ pillow
 pulsectl
 pytest
 pyyaml
+requests
 streamdeck

@@ -20,19 +20,19 @@ class BadgeCountRenderer:
     def end(self):
         font = ImageFont.truetype(self.font_filename, self._font_size)
 
-        draw = ImageDraw.Draw(self.renderer.image)
-        label_w, label_h = draw.textsize('%s' % self.text, font=font)
+        draw = ImageDraw.Draw(self.renderer.img)
+        label_w, label_h = draw.textsize('%s' % self.text, font=font, stroke_width=4)
 
         # Circle
 
-        draw.ellipse((self.renderer.image.width - self.circle_size - self.corner_offset,
-                      self.renderer.image.height - self.circle_size - self.corner_offset,
-                      self.renderer.image.width - self.corner_offset,
-                      self.renderer.image.height - self.corner_offset), fill='red')
+        draw.ellipse((self.renderer.img.width - self.circle_size - self.corner_offset,
+                      self.renderer.img.height - self.circle_size - self.corner_offset,
+                      self.renderer.img.width - self.corner_offset,
+                      self.renderer.img.height - self.corner_offset), fill='red')
 
         # Label
-        label_pos = (self.renderer.image.width - (self.circle_size / 2) - self.corner_offset - (label_w / 2),
-                     self.renderer.image.height - (self.circle_size / 2) - self.corner_offset - (label_h / 2))
-        draw.text(label_pos, text=self.text, font=font, fill=self.fill, stroke_width=2)
+        label_pos = (self.renderer.img.width - (self.circle_size / 2) - self.corner_offset - (label_w / 2),
+                     self.renderer.img.height - (self.circle_size / 2) - self.corner_offset - (label_h / 2))
+        draw.text(label_pos, text=self.text, font=font, fill=self.fill, stroke_width=4)
 
         return self.renderer
