@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./venv/bin/pytest -s tests
+./venv/bin/pytest tests
