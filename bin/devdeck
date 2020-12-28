@@ -21,17 +21,25 @@ if __name__ == "__main__":
     handler.setFormatter(formatter)
     root.addHandler(handler)
 
+    streamdecks = DeviceManager().enumerate()
+
     settings_filename = os.path.join(str(Path.home()), '.devdeck', 'settings.yml')
     if not os.path.exists(settings_filename):
         root.warning("No settings file detected!")
-        sys.exit(1)
+
+        serial_numbers = []
+        for index, deck in enumerate(streamdecks):
+            deck.open()
+            serial_numbers.append(deck.get_serial_number())
+            deck.close()
+        if len(serial_numbers) > 0:
+            root.info("Generating a setting file as none exist: %s", settings_filename)
+            DevDeckSettings.generate_default(settings_filename, serial_numbers)
 
     try:
         settings = DevDeckSettings.load(settings_filename)
     except ValidationError as validation_error:
         print(validation_error)
-
-    streamdecks = DeviceManager().enumerate()
 
     for index, deck in enumerate(streamdecks):
         deck.open()

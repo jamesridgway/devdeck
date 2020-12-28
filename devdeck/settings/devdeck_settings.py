@@ -51,3 +51,23 @@ class DevDeckSettings:
             if validator.validate(settings, schema):
                 return DevDeckSettings(settings)
             raise ValidationError(validator.errors)
+
+    @staticmethod
+    def generate_default(filename, serial_numbers):
+        default_configs = []
+        for serial_number in serial_numbers:
+            deck_config = {
+                'serial_number': serial_number,
+                'name': 'devdeck.decks.single_page_deck_controller.SinglePageDeckController',
+                'settings': {
+                    'controls': [
+                        {
+                            'name': 'devdeck.controls.clock_control.ClockControl',
+                            'key': 0
+                        }
+                    ]
+                }
+            }
+            default_configs.append(deck_config)
+        with open(filename, 'w') as f:
+            yaml.dump({'decks': default_configs}, f)
