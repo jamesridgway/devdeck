@@ -10,7 +10,13 @@ If this is your fist time using a StreamDeck make sure to follow the [Pre-requis
 Install DevDeck
 
     pip install devdeck
-    
+
+
+You should then be able to run DevDeck by running:
+
+    devdeck
+
+The first time that DevDeck is run, it will generate a basic `~/.devdeck/settings.yml` populated with the clock control for any Stream Decks that are connected.
 
 
 ## Built-in Controls
