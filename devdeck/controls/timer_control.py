@@ -28,8 +28,11 @@ class TimerControl(DeckControl):
             self.end_time = datetime.datetime.now()
             self.thread.join()
             with self.deck_context() as context:
-                context.render_text(TimerControl.time_diff_to_str(self.end_time - self.start_time),
-                                    font_size=120, fill='red')
+                with context.renderer() as r:
+                    r.text(TimerControl.time_diff_to_str(self.end_time - self.start_time))\
+                        .font_size(120)\
+                        .color('red')\
+                        .center_vertically().center_horizontally().end()
         else:
             self.start_time = None
             self.end_time = None
@@ -45,7 +48,10 @@ class TimerControl(DeckControl):
                 continue
             cutoff = datetime.datetime.now() if self.end_time is None else self.end_time
             with self.deck_context() as context:
-                context.render_text(TimerControl.time_diff_to_str(cutoff - self.start_time), font_size=120)
+                with context.renderer() as r:
+                    r.text(TimerControl.time_diff_to_str(cutoff - self.start_time)) \
+                        .font_size(120) \
+                        .center_vertically().center_horizontally().end()
             sleep(1)
 
     @staticmethod

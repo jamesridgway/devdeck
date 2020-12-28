@@ -25,7 +25,7 @@ class NameListControl(DeckControl):
                     r.image(os.path.join(os.path.dirname(__file__), "../../assets/font-awesome", 'users.png')).end()
                 else:
                     initials = ''.join(list(map(lambda x: x[0], self.settings['names'][self.name_index].split(' '))))
-                    r.text(initials).font_size(256).end()
+                    r.text(initials).font_size(256).center_vertically().center_horizontally().end()
                     self.name_index += 1
 
     def settings_schema(self):

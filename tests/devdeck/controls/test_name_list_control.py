@@ -24,20 +24,20 @@ class TestNameListControl:
             assert_that(name_list_control.name_index).is_equal_to(0)
 
             name_list_control.pressed()
-            assert_rendered(ctx, Renderer().text('SM').font_size(256).end())
+            assert_rendered(ctx, Renderer().text('SM').font_size(256).center_vertically().center_horizontally().end())
             assert_that(name_list_control.name_index).is_equal_to(1)
 
             name_list_control.pressed()
-            assert_rendered(ctx, Renderer().text('ES').font_size(256).end())
+            assert_rendered(ctx, Renderer().text('ES').font_size(256).center_vertically().center_horizontally().end())
             assert_that(name_list_control.name_index).is_equal_to(2)
 
             name_list_control.pressed()
-            assert_rendered(ctx, Renderer().text('EB').font_size(256).end())
+            assert_rendered(ctx, Renderer().text('EB').font_size(256).center_vertically().center_horizontally().end())
             assert_that(name_list_control.name_index).is_equal_to(3)
 
             name_list_control.pressed()
             assert_rendered(ctx, TestingUtils.get_filename('../assets/font-awesome/users.png'))
 
             name_list_control.pressed()
-            assert_rendered(ctx, Renderer().text('SM').font_size(256).end())
+            assert_rendered(ctx, Renderer().text('SM').font_size(256).center_vertically().center_horizontally().end())
             assert_that(name_list_control.name_index).is_equal_to(1)
