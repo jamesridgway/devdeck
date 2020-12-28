@@ -94,3 +94,14 @@ Can't find support for what you want? Implement your own `DeckControl` or `DeckC
   For example: Slack is implemented as a DeckController. Pressing the slack button will then present you with buttons
   for specific statuses.
  
+ ## Developing for DevDeck
+ Pull requesta and contributions to this project are welcome.
+ 
+ You can get setup with a virtual environment and all necessary dependencies by running:
+ 
+    ./setup.sh
+    
+Tests can be run by running:
+
+    ./run-tests.sh
+
