@@ -16,7 +16,9 @@ class TimerControl(DeckControl):
 
     def initialize(self):
         with self.deck_context() as context:
-            context.set_icon(os.path.join(os.path.dirname(__file__), "../../assets/font-awesome", 'stopwatch.png'))
+            with context.renderer() as r:
+                r.image(os.path.join(
+                    os.path.join(os.path.dirname(__file__), "../../assets/font-awesome", 'stopwatch.png'))).end()
 
     def pressed(self):
         if self.start_time is None:
@@ -33,7 +35,9 @@ class TimerControl(DeckControl):
             self.start_time = None
             self.end_time = None
             with self.deck_context() as context:
-                context.set_icon(os.path.join(os.path.dirname(__file__), "../../assets/font-awesome", 'stopwatch.png'))
+                with context.renderer() as r:
+                    r.image(os.path.join(
+                        os.path.join(os.path.dirname(__file__), "../../assets/font-awesome", 'stopwatch.png'))).end()
 
     def _update_display(self):
         while self.end_time is None:

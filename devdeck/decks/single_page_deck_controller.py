@@ -13,7 +13,8 @@ class SinglePageDeckController(DeckController):
 
     def initialize(self):
         with self.deck_context() as context:
-            context.set_icon(self.settings['icon'])
+            with context.renderer() as r:
+                r.image(self.settings['icon']).end()
 
     def deck_controls(self):
         controls = [ControlSettings(control_settings) for control_settings in self.settings['controls']]

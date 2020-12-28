@@ -3,16 +3,68 @@
 
 Stream Deck control software for software developer's.
 
-Dev Deck ships with Controls and Decks for:
+## Built-in Controls
+Dev Deck ships with the following controls:
+
+* Clock Control
+  
+  `devdeck.controls.clock_control.CommandControl` is a clock widget for displaying the date and time
 
 * Command Execution
-* Microphone Muting
-* Slack
-* Timer
+  
+  `devdeck.controls.command_control.CommandControl` is a control for executing commands on your computer. You can
+   specify any command and icon for the given action.
+
+* Microphone Mute Toggle
+
+  `devdeck.controls.mic_mute_control.MicMuteControl` toggles the mute on a given microphone input.
+
 * Name List
 
-## Custom Controls
-Can find support for what you want? Implement your own `DeckControl` or `DeckController`·
+  `devdeck.controls.name_list_control.NameListControl` cycles through initials from a list of names. Useful for things
+  like stand-ups were you need to rotate through a team and make sure you cover everyone.
+  
+* Timer
+  
+  `devdeck.controls.timer_control.TimerControl` a basic stopwatch timer that can be used to start/stop/reset timing.
+
+* Volume Control
+
+  `devdeck.controls.volume_level_control.VolumeLevelControl` sets the volume for a given output to a specified volume 
+  level.
+
+
+* Volume Mute Control
+
+  `devdeck.controls.volume_mute_control.VolumeMuteControl` toggles the muting of a given output.
+
+
+## Built-in Decks
+
+* Single Page Deck
+
+  `devdeck.decks.single_page_deck_controller.SinglePageDeckController` provides a basic single page deck for
+  controls to be arranged on.
+
+* Volume Deck
+
+  `devdeck.decks.volume_deck.VolumeDeck` is a pre-built volume deck which will show volume toggles between 0% and 100%
+  at 10% increments.
+
+## Plugins
+There are a few controls that are provided as plugins. You can always write your own plugin if you can't find the
+functionality that you're after:
+
+* [devdeck-slack](https://github.com/jamesridgway/devdeck-slack)
+
+  Controls and decks for Slack. Toggle presence, change status, snooze notifications, etc.
+
+* [devdeck-home-assistant](https://github.com/jamesridgway/devdeck-home-assistant)
+
+  Controls and decks for Home Assistant. Toggle lights, switches, etc.
+
+## Implementing Custom Controls
+Can't find support for what you want? Implement your own `DeckControl` or `DeckController`·
 
 * `DeckControl`
   
