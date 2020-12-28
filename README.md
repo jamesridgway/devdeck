@@ -3,6 +3,16 @@
 
 Stream Deck control software for software developer's.
 
+## Getting Started
+
+If this is your fist time using a StreamDeck make sure to follow the [Pre-requisite: LibUSB HIDAPI Backend](https://github.com/jamesridgway/devdeck/wiki/Installation#pre-requisite-libusb-hidapi-backend) steps documented in the wiki
+
+Install DevDeck
+
+    pip install devdeck
+    
+
+
 ## Built-in Controls
 Dev Deck ships with the following controls:
 
