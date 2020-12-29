@@ -3,6 +3,8 @@
 
 Stream Deck control software for software developer's.
 
+[![DevDeck Demo](https://files.james-ridgway.co.uk/images/streamdeck-yt-thumbnail.png)](https://www.youtube.com/watch?v=4ZvrVFW562w)
+
 ## Getting Started
 
 If this is your fist time using a StreamDeck make sure to follow the [Pre-requisite: LibUSB HIDAPI Backend](https://github.com/jamesridgway/devdeck/wiki/Installation#pre-requisite-libusb-hidapi-backend) steps documented in the wiki
