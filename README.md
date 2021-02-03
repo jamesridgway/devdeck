@@ -26,7 +26,7 @@ Dev Deck ships with the following controls:
 
 * Clock Control
   
-  `devdeck.controls.clock_control.CommandControl` is a clock widget for displaying the date and time
+  `devdeck.controls.clock_control.ClockControl` is a clock widget for displaying the date and time
 
 * Command Execution
   
