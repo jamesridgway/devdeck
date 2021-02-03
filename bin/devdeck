@@ -34,6 +34,7 @@ if __name__ == "__main__":
             deck.close()
         if len(serial_numbers) > 0:
             root.info("Generating a setting file as none exist: %s", settings_filename)
+            os.makedirs(os.path.join(str(Path.home()), '.devdeck'), exist_ok=True)
             DevDeckSettings.generate_default(settings_filename, serial_numbers)
 
     try:
