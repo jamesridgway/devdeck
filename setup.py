@@ -24,5 +24,6 @@ setup(
     license='MIT',
     packages=find_packages(),
     scripts=['bin/devdeck'],
-    install_requires=install_reqs
+    install_requires=install_reqs,
+    include_package_data=True
 )
