@@ -55,3 +55,11 @@ class VolumeDeck(DeckController):
                     .center_horizontally() \
                     .y(132) \
                     .end()
+
+    def settings_schema(self):
+        return {
+            'output': {
+                'required': True,
+                'type': 'string',
+            },
+        }
