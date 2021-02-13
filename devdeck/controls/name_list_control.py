@@ -13,7 +13,7 @@ class NameListControl(DeckControl):
         self.name_index = 0
         with self.deck_context() as context:
             with context.renderer() as r:
-                r.image(os.path.join(os.path.dirname(__file__), "../../assets/font-awesome", 'users.png')).end()
+                r.image(os.path.join(os.path.dirname(__file__), "../assets/font-awesome", 'users.png')).end()
 
     def pressed(self):
         if 'names' not in self.settings or len(self.settings['names']) == 0:
@@ -22,7 +22,7 @@ class NameListControl(DeckControl):
             with context.renderer() as r:
                 if self.name_index > len(self.settings['names']) - 1:
                     self.name_index = 0
-                    r.image(os.path.join(os.path.dirname(__file__), "../../assets/font-awesome", 'users.png')).end()
+                    r.image(os.path.join(os.path.dirname(__file__), "../assets/font-awesome", 'users.png')).end()
                 else:
                     initials = ''.join(list(map(lambda x: x[0], self.settings['names'][self.name_index].split(' '))))
                     r.text(initials).font_size(256).center_vertically().center_horizontally().end()

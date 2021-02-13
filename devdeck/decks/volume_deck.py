@@ -49,7 +49,7 @@ class VolumeDeck(DeckController):
                 r.text("{:.0f}%".format(round(sink.volume.value_flat, 2) * 100)) \
                     .center_horizontally() \
                     .end()
-                r.image(os.path.join(os.path.dirname(__file__), "../../assets/font-awesome", 'volume-up-solid.png'))\
+                r.image(os.path.join(os.path.dirname(__file__), "../assets/font-awesome", 'volume-up-solid.png'))\
                     .width(380)\
                     .height(380) \
                     .center_horizontally() \

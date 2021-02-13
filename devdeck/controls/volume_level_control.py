@@ -55,7 +55,7 @@ class VolumeLevelControl(DeckControl):
                 r.text("{:.0f}%".format(round(self.volume, 2) * 100)) \
                     .center_horizontally() \
                     .end()
-                r.image(os.path.join(os.path.dirname(__file__), "../../assets/font-awesome", 'volume-up-solid.png'))\
+                r.image(os.path.join(os.path.dirname(__file__), "../assets/font-awesome", 'volume-up-solid.png'))\
                     .width(380)\
                     .height(380) \
                     .center_horizontally() \

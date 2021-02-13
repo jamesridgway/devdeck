@@ -49,7 +49,7 @@ class VolumeMuteControl(DeckControl):
                 return
             if sink.mute == 0:
                 with context.renderer() as r:
-                    r.image(os.path.join(os.path.dirname(__file__), "../../assets/font-awesome", 'volume-up-solid.png')).end()
+                    r.image(os.path.join(os.path.dirname(__file__), "../assets/font-awesome", 'volume-up-solid.png')).end()
             else:
                 with context.renderer() as r:
-                    r.image(os.path.join(os.path.dirname(__file__), "../../assets/font-awesome", 'volume-off-solid.png')).end()
+                    r.image(os.path.join(os.path.dirname(__file__), "../assets/font-awesome", 'volume-off-solid.png')).end()

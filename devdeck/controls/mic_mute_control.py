@@ -53,10 +53,10 @@ class MicMuteControl(DeckControl):
                 return
             if mic.mute == 0:
                 with context.renderer() as r:
-                    r.image(os.path.join(os.path.dirname(__file__), "../../assets/font-awesome", 'microphone.png')).end()
+                    r.image(os.path.join(os.path.dirname(__file__), "../assets/font-awesome", 'microphone.png')).end()
             else:
                 with context.renderer() as r:
-                    r.image(os.path.join(os.path.dirname(__file__), "../../assets/font-awesome", 'microphone-mute.png')).end()
+                    r.image(os.path.join(os.path.dirname(__file__), "../assets/font-awesome", 'microphone-mute.png')).end()
 
     def settings_schema(self):
         return {
