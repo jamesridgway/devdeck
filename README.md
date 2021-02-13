@@ -24,47 +24,47 @@ The first time that DevDeck is run, it will generate a basic `~/.devdeck/setting
 ## Built-in Controls
 Dev Deck ships with the following controls:
 
-* Clock Control
+* [Clock Control](https://github.com/jamesridgway/devdeck/wiki/Controls#clock-control)
   
   `devdeck.controls.clock_control.ClockControl` is a clock widget for displaying the date and time
 
-* Command Execution
+* [Command Execution](https://github.com/jamesridgway/devdeck/wiki/Controls#command-control)
   
   `devdeck.controls.command_control.CommandControl` is a control for executing commands on your computer. You can
    specify any command and icon for the given action.
 
-* Microphone Mute Toggle
+* [Microphone Mute Toggle](https://github.com/jamesridgway/devdeck/wiki/Controls#mic-mute-control)
 
   `devdeck.controls.mic_mute_control.MicMuteControl` toggles the mute on a given microphone input.
 
-* Name List
+* [Name List](https://github.com/jamesridgway/devdeck/wiki/Controls#name-list-control)
 
   `devdeck.controls.name_list_control.NameListControl` cycles through initials from a list of names. Useful for things
   like stand-ups were you need to rotate through a team and make sure you cover everyone.
   
-* Timer
+* [Timer](https://github.com/jamesridgway/devdeck/wiki/Controls#timer-control)
   
   `devdeck.controls.timer_control.TimerControl` a basic stopwatch timer that can be used to start/stop/reset timing.
 
-* Volume Control
+* [Volume Control](https://github.com/jamesridgway/devdeck/wiki/Controls#volume-level-control)
 
   `devdeck.controls.volume_level_control.VolumeLevelControl` sets the volume for a given output to a specified volume 
   level.
 
 
-* Volume Mute Control
+* [Volume Mute Control](https://github.com/jamesridgway/devdeck/wiki/Controls#volume-mute-control)
 
   `devdeck.controls.volume_mute_control.VolumeMuteControl` toggles the muting of a given output.
 
 
 ## Built-in Decks
 
-* Single Page Deck
+* [Single Page Deck](https://github.com/jamesridgway/devdeck/wiki/Decks#singlepagedeckcontroller)
 
   `devdeck.decks.single_page_deck_controller.SinglePageDeckController` provides a basic single page deck for
   controls to be arranged on.
 
-* Volume Deck
+* [Volume Deck](https://github.com/jamesridgway/devdeck/wiki/Decks#volumedeck)
 
   `devdeck.decks.volume_deck.VolumeDeck` is a pre-built volume deck which will show volume toggles between 0% and 100%
   at 10% increments.
