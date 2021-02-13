@@ -36,6 +36,11 @@ if __name__ == "__main__":
             root.info("Generating a setting file as none exist: %s", settings_filename)
             os.makedirs(os.path.join(str(Path.home()), '.devdeck'), exist_ok=True)
             DevDeckSettings.generate_default(settings_filename, serial_numbers)
+        else:
+            root.info("""No stream deck connected. Please connect a stream deck to generate an initial config file. \n
+                         If you are having difficulty detecting your stream deck please follow the installation
+                         instructions: https://github.com/jamesridgway/devdeck/wiki/Installation""")
+            exit(0)
 
     try:
         settings = DevDeckSettings.load(settings_filename)
