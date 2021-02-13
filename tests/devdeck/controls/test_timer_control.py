@@ -13,7 +13,7 @@ class TestTimerControl:
         timer_control = TimerControl(0)
         with mock_context(timer_control) as ctx:
             timer_control.initialize()
-            assert_rendered(ctx, TestingUtils.get_filename('../assets/font-awesome/stopwatch.png'))
+            assert_rendered(ctx, TestingUtils.get_filename('../devdeck/assets/font-awesome/stopwatch.png'))
 
     def test_initial_state(self):
         timer_control = TimerControl(0)

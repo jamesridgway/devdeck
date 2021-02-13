@@ -14,7 +14,7 @@ class TestNameListControl:
         with mock_context(name_list_control) as ctx:
             name_list_control.initialize()
             assert_that(name_list_control.name_index).is_equal_to(0)
-            assert_rendered(ctx, TestingUtils.get_filename('../assets/font-awesome/users.png'))
+            assert_rendered(ctx, TestingUtils.get_filename('../devdeck/assets/font-awesome/users.png'))
 
     def test_pressed_iterates_initials(self):
         settings = {'names': ['Sarah Mcgrath', 'Eduardo Sanders', 'Ellis Banks']}
@@ -36,7 +36,7 @@ class TestNameListControl:
             assert_that(name_list_control.name_index).is_equal_to(3)
 
             name_list_control.pressed()
-            assert_rendered(ctx, TestingUtils.get_filename('../assets/font-awesome/users.png'))
+            assert_rendered(ctx, TestingUtils.get_filename('../devdeck/assets/font-awesome/users.png'))
 
             name_list_control.pressed()
             assert_rendered(ctx, Renderer().text('SM').font_size(256).center_vertically().center_horizontally().end())
