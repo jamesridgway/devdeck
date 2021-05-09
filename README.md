@@ -81,6 +81,10 @@ functionality that you're after:
 
   Controls and decks for Home Assistant. Toggle lights, switches, etc.
 
+* [devdeck-key-light](https://github.com/jamesridgway/devdeck-key-light)
+
+  Controls and decks for controlling an Elgato Key Light.
+
 ## Implementing Custom Controls
 Can't find support for what you want? Implement your own `DeckControl` or `DeckController`·
 
