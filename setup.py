@@ -1,4 +1,5 @@
 from setuptools import setup, find_packages
+import os
 import subprocess
 
 
@@ -11,7 +12,7 @@ def get_version():
         return last_tag
 
 
-with open('requirements.txt') as f:
+with open(os.path.abspath(os.path.join(os.path.dirname(__file__), 'requirements.txt'))) as f:
     install_reqs = f.read().splitlines()
 
 setup(
