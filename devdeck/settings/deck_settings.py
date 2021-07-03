@@ -1,9 +1,11 @@
 import importlib
+from operator import itemgetter
 
 
 class DeckSettings:
     def __init__(self, config):
         self.config = config
+        self.config['settings']['controls'] = sorted(self.config['settings']['controls'], key=itemgetter('key'))
 
     def serial_number(self):
         return self.config['serial_number']
