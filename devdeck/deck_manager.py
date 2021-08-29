@@ -3,7 +3,7 @@ import logging
 from devdeck.deck_context import DeckContext
 
 
-class DevDeck:
+class DeckManager:
     def __init__(self, deck):
         self.__logger = logging.getLogger('devdeck')
         self.__deck = deck

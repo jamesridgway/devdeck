@@ -2,14 +2,14 @@ from unittest import mock
 
 from assertpy import assert_that
 
-from devdeck.devdeck import DevDeck
+from devdeck.deck_manager import DeckManager
 
 
-class TestDevDeck:
+class TestDeckManager:
     @mock.patch('StreamDeck.Devices.StreamDeck.StreamDeck')
     @mock.patch('StreamDeck.Devices.StreamDeck.StreamDeck')
     def test_set_active_deck(self, first_mock_deck, second_mock_deck):
-        dev_deck = DevDeck(first_mock_deck)
+        dev_deck = DeckManager(first_mock_deck)
 
         assert_that(dev_deck.get_active_deck()).is_none()
 
@@ -25,7 +25,7 @@ class TestDevDeck:
     @mock.patch('StreamDeck.Devices.StreamDeck.StreamDeck')
     @mock.patch('StreamDeck.Devices.StreamDeck.StreamDeck')
     def test_pop_active_deck(self, first_mock_deck, second_mock_deck):
-        dev_deck = DevDeck(first_mock_deck)
+        dev_deck = DeckManager(first_mock_deck)
 
         # Two active decks and the second is active
         dev_deck.set_active_deck(first_mock_deck)
@@ -38,7 +38,7 @@ class TestDevDeck:
 
     @mock.patch('StreamDeck.Devices.StreamDeck.StreamDeck')
     def test_pop_active_deck_does_not_remove_root_deck(self, first_mock_deck):
-        dev_deck = DevDeck(first_mock_deck)
+        dev_deck = DeckManager(first_mock_deck)
         dev_deck.set_active_deck(first_mock_deck)
         assert_that(dev_deck.get_active_deck()).is_equal_to(first_mock_deck)
 
@@ -48,7 +48,7 @@ class TestDevDeck:
 
     @mock.patch('StreamDeck.Devices.StreamDeck.StreamDeck')
     def test_key_callback_propogates_to_active_deck(self, first_mock_deck):
-        dev_deck = DevDeck(first_mock_deck)
+        dev_deck = DeckManager(first_mock_deck)
         dev_deck.set_active_deck(first_mock_deck)
 
         # Pressed

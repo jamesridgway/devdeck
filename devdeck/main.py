@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import logging
 import os
 import sys
@@ -8,12 +7,13 @@ from pathlib import Path
 
 from StreamDeck.DeviceManager import DeviceManager
 
-from devdeck.devdeck import DevDeck
-from devdeck.logging.filters import InfoFilter
+from devdeck.deck_manager import DeckManager
+from devdeck.filters import InfoFilter
 from devdeck.settings.devdeck_settings import DevDeckSettings
 from devdeck.settings.validation_error import ValidationError
 
-if __name__ == "__main__":
+
+def main():
     os.makedirs(os.path.join(str(Path.home()), '.devdeck'), exist_ok=True)
 
     root = logging.getLogger('devdeck')
@@ -72,11 +72,11 @@ if __name__ == "__main__":
             deck.close()
             continue
 
-        dev_deck = DevDeck(deck)
+        deck_manager = DeckManager(deck)
 
         # Instantiate deck
         main_deck = deck_settings.deck_class()(None, **deck_settings.settings())
-        dev_deck.set_active_deck(main_deck)
+        deck_manager.set_active_deck(main_deck)
 
         for t in threading.enumerate():
             if t is threading.currentThread():
@@ -86,5 +86,5 @@ if __name__ == "__main__":
                 try:
                     t.join()
                 except KeyboardInterrupt as ex:
-                    dev_deck.close()
+                    deck_manager.close()
                     deck.close()

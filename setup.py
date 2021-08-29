@@ -24,7 +24,11 @@ setup(
     url='https://github.com/jamesridgway/devdeck',
     license='MIT',
     packages=find_packages(),
-    scripts=['bin/devdeck'],
+    entry_points={
+        'console_scripts': [
+            'devdeck = devdeck.main:main'
+        ]
+    },
     install_requires=install_reqs,
     include_package_data=True
 )
