@@ -88,3 +88,10 @@ def main():
                 except KeyboardInterrupt as ex:
                     deck_manager.close()
                     deck.close()
+
+    if len(streamdecks) == 0:
+        root.info("No streamdecks detected, exiting.")
+
+
+if __name__ == '__main__':
+    main()
