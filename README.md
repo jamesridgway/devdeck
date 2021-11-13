@@ -3,7 +3,7 @@
 
 Stream Deck control software for software developer's.
 
-[![DevDeck Demo](https://files.james-ridgway.co.uk/images/streamdeck-yt-thumbnail.png)](https://www.youtube.com/watch?v=4ZvrVFW562w)
+[![DevDeck Demo](https://files.jamesridgway.co.uk/images/streamdeck-yt-thumbnail.png)](https://www.youtube.com/watch?v=4ZvrVFW562w)
 
 ## Getting Started
 
