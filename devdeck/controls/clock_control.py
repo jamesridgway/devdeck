@@ -1,24 +1,23 @@
+import asyncio
+from asyncio.events import get_event_loop
 import threading
 from datetime import datetime
-from time import sleep
+from asyncio import sleep
 
 from devdeck_core.controls.deck_control import DeckControl
 
 
 class ClockControl(DeckControl):
 
-    def __init__(self, key_no, **kwargs):
+    def __init__(self, key_no: int, **kwargs):
+        self.loop = get_event_loop()
         super().__init__(key_no, **kwargs)
-        self.thread = None
-        self.running = False
 
     def initialize(self):
-        self.thread = threading.Thread(target=self._update_display)
-        self.running = True
-        self.thread.start()
+        self.loop.create_task(self._update_display())
 
-    def _update_display(self):
-        while self.running is True:
+    async def _update_display(self):
+        while True:
             with self.deck_context() as context:
                 now = datetime.now()
 
@@ -33,10 +32,4 @@ class ClockControl(DeckControl):
                         .center_vertically(100) \
                         .font_size(75) \
                         .end()
-            sleep(1)
-
-    def dispose(self):
-        self.running = False
-        if self.thread:
-            self.thread.join()
-
+            await sleep(1)

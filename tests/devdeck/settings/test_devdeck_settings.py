@@ -6,7 +6,6 @@ from devdeck.settings.devdeck_settings import DevDeckSettings
 from devdeck.settings.validation_error import ValidationError
 from tests.testing_utils import TestingUtils
 
-
 class TestDevDeckSettings:
     def test_empty_config(self):
         devdeck_settings = DevDeckSettings.load(

@@ -1,3 +1,4 @@
+import asyncio
 import logging
 import os
 from subprocess import Popen, DEVNULL

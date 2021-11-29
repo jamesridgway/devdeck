@@ -4,7 +4,7 @@ devdeck-core==1.0.7
 emoji
 jsonschema
 pillow
-pulsectl
+pulsectl-asyncio
 pytest
 pyyaml
 requests

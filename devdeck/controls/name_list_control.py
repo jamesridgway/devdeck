@@ -1,7 +1,7 @@
+import asyncio
 import os
 
 from devdeck_core.controls.deck_control import DeckControl
-
 
 class NameListControl(DeckControl):
 
