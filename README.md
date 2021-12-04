@@ -101,7 +101,7 @@ Can't find support for what you want? Implement your own `DeckControl` or `DeckC
   for specific statuses.
  
  ## Developing for DevDeck
- Pull requesta and contributions to this project are welcome.
+ Pull requests and contributions to this project are welcome.
  
  You can get setup with a virtual environment and all necessary dependencies by running:
  
