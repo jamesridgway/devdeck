@@ -1,3 +1,5 @@
+import asyncio
+from asyncio.events import get_event_loop
 import logging
 import os
 
@@ -8,11 +10,12 @@ from devdeck_core.controls.deck_control import DeckControl
 
 class VolumeLevelControl(DeckControl):
 
-    def __init__(self, key_no, **kwargs):
+    def __init__(self, key_no,  **kwargs):
+        self.loop = get_event_loop(),
         self.pulse = None
         self.volume = None
         self.__logger = logging.getLogger('devdeck')
-        super().__init__(key_no, **kwargs)
+        super().__init__(key_no, ** kwargs)
 
     def initialize(self):
         if self.pulse is None:
@@ -29,10 +32,12 @@ class VolumeLevelControl(DeckControl):
 
     def __get_output(self):
         sinks = self.pulse.sink_list()
-        selected_output = [output for output in sinks if output.description == self.settings['output']]
+        selected_output = [
+            output for output in sinks if output.description == self.settings['output']]
         if len(selected_output) == 0:
             possible_ouputs = [output.description for output in sinks]
-            self.__logger.warning("Output '%s' not found in list of possible outputs:\n%s", self.settings['output'], '\n'.join(possible_ouputs))
+            self.__logger.warning("Output '%s' not found in list of possible outputs:\n%s",
+                                  self.settings['output'], '\n'.join(possible_ouputs))
             return None
         return selected_output[0]
 
