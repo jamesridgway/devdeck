@@ -9,4 +9,4 @@ pytest
 pyyaml
 requests
 streamdeck
-xdg
+pyxdg
