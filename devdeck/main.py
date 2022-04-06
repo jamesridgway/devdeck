@@ -5,6 +5,8 @@ import threading
 from logging.handlers import RotatingFileHandler
 from pathlib import Path
 
+from xdg.BaseDirectory import *
+
 from StreamDeck.DeviceManager import DeviceManager
 
 from devdeck.deck_manager import DeckManager
@@ -14,7 +16,8 @@ from devdeck.settings.validation_error import ValidationError
 
 
 def main():
-    os.makedirs(os.path.join(str(Path.home()), '.devdeck'), exist_ok=True)
+    config_dir = os.path.join(str(xdg_config_dirs[0]), 'devdeck')
+    os.makedirs(config_dir, exist_ok=True)
 
     root = logging.getLogger('devdeck')
     root.setLevel(logging.DEBUG)
@@ -32,14 +35,14 @@ def main():
     error_handler.setFormatter(formatter)
     root.addHandler(error_handler)
 
-    fileHandler = RotatingFileHandler(os.path.join(str(Path.home()), '.devdeck', 'devdeck.log'), maxBytes=100000,
+    fileHandler = RotatingFileHandler(os.path.join(str(config_dir), 'devdeck.log'), maxBytes=100000,
                                       backupCount=5)
     fileHandler.setFormatter(formatter)
     root.addHandler(fileHandler)
 
     streamdecks = DeviceManager().enumerate()
 
-    settings_filename = os.path.join(str(Path.home()), '.devdeck', 'settings.yml')
+    settings_filename = os.path.join(str(config_dir), 'settings.yml')
     if not os.path.exists(settings_filename):
         root.warning("No settings file detected!")
 
