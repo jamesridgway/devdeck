@@ -16,9 +16,10 @@ from devdeck.settings.validation_error import ValidationError
 
 
 def main():
-    config_dir = os.path.join(str(xdg_config_dirs[0]), 'devdeck')
+    config_dir = os.path.join(str(xdg_config_home), 'devdeck')
+    assets_dir = os.path.join(str(config_dir), 'assets')
     os.makedirs(config_dir, exist_ok=True)
-
+    os.makedirs(assets_dir, exist_ok=True)
     root = logging.getLogger('devdeck')
     root.setLevel(logging.DEBUG)
 
