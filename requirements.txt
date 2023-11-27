@@ -1,6 +1,6 @@
 assertpy
 cerberus
-devdeck-core==1.0.7
+devdeck-core==1.0.8
 emoji
 jsonschema
 pillow
