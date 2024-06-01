@@ -30,11 +30,11 @@ class DeckContext:
         image = PILHelper.to_native_format(self.__deck, icon)
         self.__deck.set_key_image(key_no, image)
 
-    def set_active_deck(self, deck):
-        self.__devdeck.set_active_deck(deck)
+    async def set_active_deck(self, deck):
+        await self.__devdeck.set_active_deck(deck)
 
-    def pop_active_deck(self):
-        self.__devdeck.pop_active_deck()
+    async def pop_active_deck(self):
+        await self.__devdeck.pop_active_deck()
 
     def renderer(self, key_no):
         return RendererManager(key_no, self)

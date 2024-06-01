@@ -1,3 +1,4 @@
+import asyncio
 import logging
 import os
 import sys
@@ -13,7 +14,7 @@ from devdeck.settings.devdeck_settings import DevDeckSettings
 from devdeck.settings.validation_error import ValidationError
 
 
-def main():
+async def main():
     os.makedirs(os.path.join(str(Path.home()), '.devdeck'), exist_ok=True)
 
     root = logging.getLogger('devdeck')
@@ -76,22 +77,14 @@ def main():
 
         # Instantiate deck
         main_deck = deck_settings.deck_class()(None, **deck_settings.settings())
-        deck_manager.set_active_deck(main_deck)
-
-        for t in threading.enumerate():
-            if t is threading.currentThread():
-                continue
-
-            if t.is_alive():
-                try:
-                    t.join()
-                except KeyboardInterrupt as ex:
-                    deck_manager.close()
-                    deck.close()
+        await deck_manager.set_active_deck(main_deck)
+        return deck_manager
 
     if len(streamdecks) == 0:
         root.info("No streamdecks detected, exiting.")
 
 
 if __name__ == '__main__':
-    main()
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(main())
+    loop.run_forever()

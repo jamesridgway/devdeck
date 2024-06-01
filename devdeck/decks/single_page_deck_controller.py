@@ -12,7 +12,7 @@ class SinglePageDeckController(DeckController):
         self.settings = kwargs
         super().__init__(key_no, **kwargs)
 
-    def initialize(self):
+    async def initialize(self):
         with self.deck_context() as context:
             with context.renderer() as r:
                 r.image(os.path.expanduser(self.settings['icon'])).end()

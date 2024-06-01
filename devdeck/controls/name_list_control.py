@@ -9,13 +9,13 @@ class NameListControl(DeckControl):
         self.name_index = 0
         super().__init__(key_no, **kwargs)
 
-    def initialize(self):
+    async def initialize(self):
         self.name_index = 0
         with self.deck_context() as context:
             with context.renderer() as r:
                 r.image(os.path.join(os.path.dirname(__file__), "../assets/font-awesome", 'users.png')).end()
 
-    def pressed(self):
+    async def pressed(self):
         if 'names' not in self.settings or len(self.settings['names']) == 0:
             return
         with self.deck_context() as context:

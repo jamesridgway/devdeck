@@ -11,7 +11,7 @@ class VolumeDeck(DeckController):
         self.__logger = logging.getLogger('devdeck')
         super().__init__(key_no, **kwargs)
 
-    def initialize(self):
+    async def initialize(self):
         self.pulse = pulsectl.Pulse()
         self.__render_icon()
 

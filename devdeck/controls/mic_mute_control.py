@@ -13,12 +13,12 @@ class MicMuteControl(DeckControl):
         self.__logger = logging.getLogger('devdeck')
         super().__init__(key_no, **kwargs)
 
-    def initialize(self):
+    async def initialize(self):
         if self.pulse is None:
             self.pulse = pulsectl.Pulse('MicMuteControl')
         self.__render_icon()
 
-    def pressed(self):
+    async def pressed(self):
         mic = self.__get_mic()
         if mic is None:
             return

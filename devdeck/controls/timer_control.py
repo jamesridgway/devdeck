@@ -14,12 +14,12 @@ class TimerControl(DeckControl):
         self.thread = None
         super().__init__(key_no, **kwargs)
 
-    def initialize(self):
+    async def initialize(self):
         with self.deck_context() as context:
             with context.renderer() as r:
                 r.image(os.path.join(os.path.dirname(__file__), "../assets/font-awesome", 'stopwatch.png')).end()
 
-    def pressed(self):
+    async def pressed(self):
         if self.start_time is None:
             self.start_time = datetime.datetime.now()
             self.thread = threading.Thread(target=self._update_display)

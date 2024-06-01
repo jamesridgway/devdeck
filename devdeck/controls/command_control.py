@@ -10,12 +10,12 @@ class CommandControl(DeckControl):
         self.__logger = logging.getLogger('devdeck')
         super().__init__(key_no, **kwargs)
 
-    def initialize(self):
+    async def initialize(self):
         with self.deck_context() as context:
             with context.renderer() as r:
                 r.image(os.path.expanduser(self.settings['icon'])).end()
 
-    def pressed(self):
+    async def pressed(self):
         try:
             Popen(self.settings['command'], stdout=DEVNULL, stderr=DEVNULL)
         except Exception as ex:
